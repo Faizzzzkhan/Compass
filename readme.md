@@ -8,7 +8,9 @@
 Compass is a career recommendation system that is designed to assist individuals in exploring and identifying suitable career paths. It utilises various factors to analyse a user's profile and generate recommendations that align with their interests, skills, and preferences.
 </p>
 
-<h2>Backend</h2>
-<ul> 
+## Frontend
+<li>React and React Hooks</li>
+<li>Tailwind Csss </li>
+
+## Backend
 <li>Django with DjangoRestFramework</li>
-</ul>
