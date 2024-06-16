@@ -6,8 +6,10 @@ function App() {
 
   return (
     <>
+    <div className='h-screen overflow-hidden'>
       <Navbar />
       <Home />
+    </div>
     </>
   )
 }
