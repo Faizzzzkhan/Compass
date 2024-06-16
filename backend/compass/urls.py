@@ -17,6 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import path, include
+from questions import views
+
+urlpatterns = [
+    path('api/questions/<str:mode>/<str:category>/', views.GetQuestionsView.as_view()),
+    # Add other URL patterns for further functionalities (e.g., user management)
+]
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
