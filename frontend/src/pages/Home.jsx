@@ -1,3 +1,4 @@
+import QuizBtn from "../components/BtnQuix";
 import Photo from "../assets/image.png"
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
               Take our career quiz to discover personalized recommendations,
               explore resources and plan your prefessional journey
             </p>
-            <button className="p-3 text-sm rounded-md bg-[#509df9]">Take te Quiz</button>
+            <QuizBtn/>
           </div>
           <div className="w-full flex items-center">
             <img src={Photo} alt="home image" height={10} width={400} className="rounded-md"/>
