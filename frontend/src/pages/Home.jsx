@@ -15,8 +15,8 @@ function Home() {
             </p>
             <QuizBtn/>
           </div>
-          <div className="w-full flex items-center">
-            <img src={Photo} alt="home image" height={10} width={400} className="rounded-md"/>
+          <div className="w-full flex items-center justify-center">
+            <img src={Photo} alt="home image" width={500} className="rounded-md"/>
           </div>
         </div>
       </div>

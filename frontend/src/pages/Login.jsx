@@ -1,15 +1,19 @@
-import {GoogleAuthProvider,getAuth,signInWithRedirect} from "firebase/auth";
+import {GoogleAuthProvider,getAuth,signInWithPopup} from "firebase/auth";
 import { useAuthContext } from "../context/AuthContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Login() {
     const [loading,setLoading] = useState(false);
     const auth = getAuth();
     const {user} = useAuthContext();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         if(user!=null){
-            alert("You are already Login. Go to Home Page");
+            toast.success("You are already Login")
+            navigate("/")
         }
     },[user,auth.currentUser?.displayName]);
 
@@ -17,7 +21,7 @@ function Login() {
         setLoading(true);
         try{
             const provider = new GoogleAuthProvider();
-            await signInWithRedirect(auth, provider);
+            await signInWithPopup(auth, provider);
         }catch(error){
             alert("Problem while signing! :",error);
         }

@@ -13,7 +13,6 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path="/quiz" element={<Quiz/>} />
-{/* Directory route will be here */}
           </Routes>
         </div>
     </>
