@@ -13,7 +13,7 @@ cred = Certificate(creds_file)
 default_app = initialize_app(credential=cred)
 
 
-async def get_user_details_from_token(token:str) -> UserFromToken | str:
+def get_user_details_from_token(token:str) -> UserFromToken | str:
     """
     Verify authentication token from google API
     Parameters:
