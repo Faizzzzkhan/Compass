@@ -7,14 +7,12 @@ import Quiz from "./pages/Quiz";
 function App() {
   return (
     <>
-        <div className="h-screen overflow-hidden">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/quiz" element={<Quiz/>} />
-          </Routes>
-        </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/quiz" element={<Quiz />} />
+      </Routes>
     </>
   );
 }

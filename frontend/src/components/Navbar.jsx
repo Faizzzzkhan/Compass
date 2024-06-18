@@ -4,6 +4,7 @@ import QuizBtn from "./BtnQuix";
 import { useEffect } from "react";import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 
+
 function Navbar() {
   const auth = getAuth();
   const {user} = useAuthContext();
@@ -18,7 +19,7 @@ function Navbar() {
           toast.error("Problem in Signing out");
         });
     } else {
-      toast.success("Be a Part in Improving the Society!");
+      toast.success("Glad! You change your mind!");
     }
   };
   
@@ -33,10 +34,10 @@ function Navbar() {
           </NavLink>
           <div className="flex items-center gap-10">
             <ul className="flex gap-5">
-              <li>Resources</li>
-              <li>Blog</li>
-              <li>About Us</li>
-              <li>Contact</li>
+              <li className="hover:underline cursor-pointer">Resources</li>
+              <li className="hover:underline cursor-pointer">Blog</li>
+              <li className="hover:underline cursor-pointer">About Us</li>
+              <li className="hover:underline cursor-pointer">Contact</li>
             </ul>
             <div className="flex gap-3">
               {auth.currentUser && auth.currentUser.displayName  ? (
