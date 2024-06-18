@@ -6,7 +6,3 @@ class Question(models.Model):
     text = models.TextField()
     answer_choices = models.TextField(blank=True)  # Comma-separated choices for multiple choice questions
     correct_answer = models.TextField(blank=True)  # Stores the correct answer for multiple choice or open-ended questions
-
-class User(models.Model):  # Optional
-    # Add user fields (username, email, etc.) as needed
-    pass
