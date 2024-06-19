@@ -13,6 +13,7 @@ function Navbar() {
     if (ready) {
       signOut(auth)
         .then(() => {
+          localStorage.clear()
           toast.success("Sign out successfully!");
         })
         .catch((error) => {

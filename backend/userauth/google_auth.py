@@ -1,19 +1,19 @@
 import os 
 from firebase_admin.credentials import Certificate
-from firebase_admin.auth import verify_id_token
+from firebase_admin.auth import verify_id_token, ExpiredIdTokenError
 from firebase_admin import initialize_app
 
 from .serializers import UserFromToken
-from compass.settings import BASE_DIR
+from django.conf import settings
 
 
-creds_file = os.path.join(BASE_DIR, 'userauth', 'compassmain.json')
+creds_file = os.path.join(settings.BASE_DIR, 'userauth', 'compassmain.json')
 cred = Certificate(creds_file)
 
 default_app = initialize_app(credential=cred)
 
 
-async def get_user_details_from_token(token:str) -> UserFromToken | str:
+def get_user_details_from_token(token:str) -> UserFromToken | str:
     """
     Verify authentication token from google API
     Parameters:
@@ -21,11 +21,12 @@ async def get_user_details_from_token(token:str) -> UserFromToken | str:
     """
     try:
         user_details = verify_id_token(token)
-        uid = user_details['uid']
-        username = user_details['username']
+        name = user_details['name']
+        uid = user_details['user_id']
         email = user_details['email']
-        user = UserFromToken(uid, name, email)
-        return user
+        return UserFromToken(uid, name, email)
+    except ExpiredIdTokenError:
+        return "Token Expired"
     except Exception as e:
         #TODO: Implement Logging errors
         return f"error : {e}"
