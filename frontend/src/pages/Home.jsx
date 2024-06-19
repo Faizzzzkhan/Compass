@@ -1,6 +1,11 @@
 import QuizBtn from "../components/BtnQuix";
 import Photo from "../assets/image.png";
-import SecondSection  from "../components/SecondSection";
+import SecondSection  from "../components/HomeSection/SecondSection";
+import ThirdSection from "../components/HomeSection/ThirdSection";
+import ForthSection from "../components/HomeSection/ForthSection";
+import FifthSection from "../components/HomeSection/FifthSection";
+import Footer from "../components/Footer";
+
 function Home() {
   return (
     <>
@@ -22,6 +27,10 @@ function Home() {
         </div> 
       </div>
       <SecondSection/>
+      <ThirdSection/>
+      <ForthSection/>
+      <FifthSection/>
+      <Footer/>
     </>
   );
 }
