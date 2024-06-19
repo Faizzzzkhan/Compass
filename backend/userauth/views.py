@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpRequest, HttpResponse
 
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 
 from rest_framework.views import APIView
 from rest_framework import serializers
@@ -10,6 +10,12 @@ from userauth.google_auth import get_user_details_from_token
 from userauth.selectors import get_user
 from userauth.services import create_user
 from django.contrib.auth.models import User
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return JsonResponse({"status": "success", "msg": "user logged out"})
 
 
 class LoginOrSignUpWithTokenView(APIView):
@@ -22,7 +28,7 @@ class LoginOrSignUpWithTokenView(APIView):
 
     def post(self, request):
         """
-        Login 
+        Login
         """
         user_data = self.TokenSerializer(data=request.data)
         if not user_data.is_valid():
@@ -39,8 +45,7 @@ class LoginOrSignUpWithTokenView(APIView):
             )
             if not new_user:
                 return JsonResponse(
-                    {"status": "request failed unable to create a new user"},
-                    status=500
+                    {"status": "request failed unable to create a new user"}, status=500
                 )
             login(request, new_user)
         login(request, user_in_db)
@@ -50,4 +55,3 @@ class LoginOrSignUpWithTokenView(APIView):
 def check_status(request: HttpRequest):
     print(request.user)
     return JsonResponse({"status": "up"})
-
